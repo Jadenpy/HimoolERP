@@ -5,7 +5,8 @@ from tencentcloud.sms.v20210111 import sms_client, models
 from extensions.exceptions import ServerError
 from tencentcloud.common import credential
 import json
-from configs.django import SECRET_ID, SECRET_KEY, SMS_SDK_APP_ID, TEMPLATE_ID, SIGN_NAME, REGION
+# from configs.django import SECRET_ID, SECRET_KEY, SMS_SDK_APP_ID, TEMPLATE_ID, SIGN_NAME, REGION
+from tools.create_configs import SECRET_ID, SECRET_KEY, SMS_SDK_APP_ID, TEMPLATE_ID, SIGN_NAME, REGION
 
 
 def send_phone_code(phone, code):

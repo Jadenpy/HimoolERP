@@ -122,7 +122,7 @@ CRM_URL = None
 
 """
 
-    with open(BASE_DIR / 'configs/django.py', 'w') as file:
+    with open(BASE_DIR / 'configs/django.py', 'w',encoding='utf-8') as file:
         file.write(file_content)
 
 

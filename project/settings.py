@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from datetime import timedelta
-from configs.django import *
+# from configs.django import *
+
+# from tools.create_configs import *
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -130,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'static'    
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
