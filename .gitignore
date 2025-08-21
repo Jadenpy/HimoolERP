@@ -125,3 +125,5 @@ trash/*
 !trash/templates/
 *.lock
 frontend/package-lock.json
+tree.txt
+*.gitignore
