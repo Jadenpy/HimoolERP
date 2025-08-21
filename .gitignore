@@ -127,3 +127,5 @@ trash/*
 frontend/package-lock.json
 tree.txt
 *.gitignore
+self/todo.md
+self/image/todo/1755756238536.png
