@@ -1,8 +1,8 @@
 <template>
   <div style="height: 100vh;">
     <div class="logo" @click="$router.push('/')" style="width: 256px">
-      <img :src="logo" width="36" style="margin-top: -6px; margin-left: 8px;" />
-      <span v-if="!collapsed" style="color: #1890ff; margin-left: 6px; font-size: 16px">盒木Himool ERP</span>
+      <!-- <img :src="logo" width="36" style="margin-top: -6px; margin-left: 8px;" /> -->
+      <span v-if="!collapsed" style="color: #1890ff; margin-left: 6px; font-size: 16px">Welcome Kautex Pinghu</span>
       <!-- <span v-if="!collapsed" style="color: #1890ff; margin-left: 6px; font-size: 18px;">ERP</span> -->
     </div>
     <a-menu theme="light" mode="inline" :selectedKeys="selectedKeys" :inline-collapsed="collapsed"
