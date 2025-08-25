@@ -152,10 +152,10 @@ class AccountTransferRecord(Model):
 
     out_account = ForeignKey('data.Account', on_delete=PROTECT,
                              related_name='out_account_transfer_records', verbose_name='转出账户')
-    transfer_out_time = DateTimeField(verbose_name='转出时间')
+    transfer_out_time = DateTimeField(default=timezone.now,verbose_name='转出时间')
     in_account = ForeignKey('data.Account', on_delete=PROTECT,
                                      related_name='in_account_transfer_records', verbose_name='转入账户')
-    transfer_in_time = DateTimeField(verbose_name='转入时间')
+    transfer_in_time = DateTimeField(default=timezone.now,verbose_name='转入时间')
     transfer_amount = AmountField(verbose_name='转账金额')
     service_charge_amount = AmountField(default=0, verbose_name='手续费金额')
     service_charge_payer = CharField(max_length=32, choices=ServiceChargePayer.choices,

@@ -4,7 +4,7 @@ from django.utils import timezone
 class Team(Model):
 
     number = CharField(max_length=32, verbose_name='编号')
-    expiry_time = DateTimeField(verbose_name='到期时间')
+    expiry_time = DateTimeField(default=timezone.now,verbose_name='到期时间')
     create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     user_quantity = IntegerField(default=10, verbose_name='用户数量')
     remark = CharField(max_length=256, blank=True, null=True, verbose_name='备注')
