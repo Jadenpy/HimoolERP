@@ -1,5 +1,5 @@
 from extensions.models import *
-
+from django.utils import timezone
 
 class InventoryFlow(Model):
     """库存流水"""
@@ -67,7 +67,7 @@ class InventoryFlow(Model):
                                            related_name='void_inventory_flows', verbose_name='作废调拨单据')
 
     creator = ForeignKey('system.User', on_delete=PROTECT, related_name='inventory_flows', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='inventory_flows')
 
 
@@ -139,7 +139,7 @@ class FinanceFlow(Model):
 
     creator = ForeignKey('system.User', on_delete=PROTECT, null=True,
                          related_name='finance_flows', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='finance_flows')
 
 

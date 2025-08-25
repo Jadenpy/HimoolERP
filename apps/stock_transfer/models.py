@@ -1,6 +1,6 @@
 from extensions.common.base import *
 from extensions.models import *
-
+from django.utils import timezone
 
 class StockTransferOrder(Model):
     """调拨单据"""
@@ -20,7 +20,7 @@ class StockTransferOrder(Model):
     enable_auto_stock_in = BooleanField(default=False, verbose_name='启用自动入库')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_stock_transfer_orders', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='stock_transfer_orders')
 
     class Meta:

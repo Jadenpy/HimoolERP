@@ -1,6 +1,6 @@
 from extensions.common.base import *
 from extensions.models import *
-
+from django.utils import timezone
 
 class PurchaseOrder(Model):
     """采购单据"""
@@ -20,7 +20,7 @@ class PurchaseOrder(Model):
     enable_auto_stock_in = BooleanField(default=False, verbose_name='启用自动入库')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_purchase_orders', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='purchase_orders')
 
     class Meta:
@@ -89,7 +89,7 @@ class PurchaseReturnOrder(Model):
     enable_auto_stock_out = BooleanField(default=False, verbose_name='启用自动出库')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_purchase_return_orders', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='purchase_return_orders')
 
     class Meta:

@@ -1,6 +1,6 @@
 from extensions.common.base import *
 from extensions.models import *
-
+from django.utils import timezone
 
 class GoodsCategory(Model):
     """产品分类"""
@@ -100,7 +100,7 @@ class Batch(Model):
     warning_date = DateField(null=True, verbose_name='预警日期')
     expiration_date = DateField(null=True, verbose_name='过期日期')
     has_stock = BooleanField(default=True, verbose_name='库存状态')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='batchs')
 
     class Meta:
