@@ -1,11 +1,11 @@
 from extensions.models import *
-
+from django.utils import timezone
 
 class Team(Model):
 
     number = CharField(max_length=32, verbose_name='编号')
-    expiry_time = DateTimeField(verbose_name='到期时间')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    expiry_time = DateTimeField(default=timezone.now,verbose_name='到期时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     user_quantity = IntegerField(default=10, verbose_name='用户数量')
     remark = CharField(max_length=256, blank=True, null=True, verbose_name='备注')
     enable_auto_stock_in = BooleanField(default=False, verbose_name='启用自动入库')
@@ -61,7 +61,7 @@ class User(Model):
     permissions = JSONField(default=list, verbose_name='权限')
     is_manager = BooleanField(default=False, verbose_name='管理员状态')
     is_active = BooleanField(default=True, verbose_name='激活状态')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='users')
 
     class Meta:
@@ -73,7 +73,7 @@ class VerificationCode(Model):
 
     phone = CharField(max_length=32, verbose_name='手机号')
     code = CharField(max_length=6, verbose_name='验证码')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
 
 
 __all__ = [

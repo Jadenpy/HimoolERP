@@ -1,6 +1,6 @@
 from extensions.common.base import *
 from extensions.models import *
-
+from django.utils import timezone
 
 class PaymentOrder(Model):
     """付款单据"""
@@ -15,7 +15,7 @@ class PaymentOrder(Model):
     is_void = BooleanField(default=False, verbose_name='作废状态')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_payment_orders', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='payment_orders')
 
     class Meta:
@@ -61,7 +61,7 @@ class CollectionOrder(Model):
     is_void = BooleanField(default=False, verbose_name='作废状态')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_collection_orders', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='collection_orders')
 
     class Meta:
@@ -121,7 +121,7 @@ class ChargeOrder(Model):
     is_void = BooleanField(default=False, verbose_name='作废状态')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_charge_orders', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='charge_orders')
 
     class Meta:
@@ -152,10 +152,10 @@ class AccountTransferRecord(Model):
 
     out_account = ForeignKey('data.Account', on_delete=PROTECT,
                              related_name='out_account_transfer_records', verbose_name='转出账户')
-    transfer_out_time = DateTimeField(verbose_name='转出时间')
+    transfer_out_time = DateTimeField(default=timezone.now,verbose_name='转出时间')
     in_account = ForeignKey('data.Account', on_delete=PROTECT,
                                      related_name='in_account_transfer_records', verbose_name='转入账户')
-    transfer_in_time = DateTimeField(verbose_name='转入时间')
+    transfer_in_time = DateTimeField(default=timezone.now,verbose_name='转入时间')
     transfer_amount = AmountField(verbose_name='转账金额')
     service_charge_amount = AmountField(default=0, verbose_name='手续费金额')
     service_charge_payer = CharField(max_length=32, choices=ServiceChargePayer.choices,
@@ -166,7 +166,7 @@ class AccountTransferRecord(Model):
     is_void = BooleanField(default=False, verbose_name='作废状态')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_account_transfer_records', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='account_transfer_records')
 
 

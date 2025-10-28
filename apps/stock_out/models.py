@@ -1,6 +1,6 @@
 from extensions.common.base import *
 from extensions.models import *
-
+from django.utils import timezone
 
 class StockOutOrder(Model):
     """出库通知单据"""
@@ -28,7 +28,7 @@ class StockOutOrder(Model):
     is_void = BooleanField(default=False, verbose_name='作废状态')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_stock_out_orders', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='stock_out_orders')
 
     class Meta:
@@ -79,7 +79,7 @@ class StockOutRecord(Model):
     is_void = BooleanField(default=False, verbose_name='作废状态')
     creator = ForeignKey('system.User', on_delete=PROTECT,
                          related_name='created_stock_out_records', verbose_name='创建人')
-    create_time = DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
     team = ForeignKey('system.Team', on_delete=CASCADE, related_name='stock_out_records')
 
 
