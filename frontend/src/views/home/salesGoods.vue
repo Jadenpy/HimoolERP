@@ -27,6 +27,7 @@
         dateRange: [moment().add(-7, 'days').startOf('day'), moment().startOf('day')],
         chart: null,
         loading: false,
+        salesLoading: false,
       };
     },
     methods: {
