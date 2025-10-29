@@ -50,13 +50,13 @@
         }
 
         this.loading = true;
-        salesTrendList(form).then(resp => {
-          let data = [...resp, ...this.fillData(resp, resp.map(item => { return item.warehouse_name }))];
-          this.chart.changeData(data);
-          this.chart.forceFit();
-        }).finally(() => {
-          this.loading = false;
-        });
+        // salesTrendList(form).then(resp => {
+        //   let data = [...resp, ...this.fillData(resp, resp.map(item => { return item.warehouse_name }))];
+        //   this.chart.changeData(data);
+        //   this.chart.forceFit();
+        // }).finally(() => {
+        //   this.loading = false;
+        // });
       },
       changeDateRange(dateRange) {
         this.dateRange = dateRange;

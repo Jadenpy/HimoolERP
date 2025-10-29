@@ -1,6 +1,8 @@
 <template>
   <div>
     <a-row :gutter="[8, 8]">
+      <p>今日销售额 / 今日销售笔数 /今日采购笔数 /待办事项</p>
+      <p>根据所需修改</p>
       <a-col :span="8">
         <a-card title="今日销售额" size="small">
           <div style="text-align: center; font-size: 36px; font-weight: 600; color: #1890ff; margin: 12px 0;">
@@ -129,13 +131,23 @@ export default {
     },
     list() {
       this.loading = true;
-      homeOverview()
-        .then((data) => {
-          this.item = data;
-        })
-        .finally(() => {
-          this.loading = false;
-        });
+      // homeOverview()
+      //   .then((data) => {
+      //     this.item = data;
+      //   })
+      //   .finally(() => {
+      //     this.loading = false;
+      //   });
+      this.item = {
+        sales_amount: 123456.78,
+        sales_count: 34,
+        purchase_count: 12,
+        stock_in_task_count: 5,
+        stock_out_task_count: 3,
+        inventory_warning_count: 7,
+        arrears_receivable_amount: 45678.90,
+        arrears_payable_amount: 12345.67,
+      };
     },
     navigateTo(pathName) {
       this.$router.push({ path: pathName });

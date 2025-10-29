@@ -48,12 +48,12 @@
         }
 
         this.loading = true;
-        salesTopTenList(form).then(resp => {
-          this.chart.changeData(resp);
-          this.chart.forceFit();
-        }).finally(() => {
-          this.loading = false;
-        });
+        // salesTopTenList(form).then(resp => {
+        //   this.chart.changeData(resp);
+        //   this.chart.forceFit();
+        // }).finally(() => {
+        //   this.loading = false;
+        // });
       },
       changeDateRange(dateRange) {
         this.dateRange = dateRange;

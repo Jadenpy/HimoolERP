@@ -5,7 +5,7 @@
       <span
         v-if="!collapsed"
         style="color: #1890ff; margin-left: 6px; font-size: 16px"
-        >Welcome Kautex Pinghu</span
+        >Welcome to Kautex Pinghu</span
       >
     </div>
     <a-menu
