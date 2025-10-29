@@ -2,7 +2,7 @@ from extensions.serializers import *
 
 
 class GetTokenRequest(Serializer):
-    number = CharField(label='Team 编号')
+    # number = CharField(label='Team 编号')
     username = CharField(label='用户名')
     password = CharField(label='密码')
 
@@ -21,6 +21,7 @@ class RefreshTokenResponse(Serializer):
 
 
 class UserInfoResponse(Serializer):
+   
     id = IntegerField(label='用户ID')
     username = CharField(label='用户名')
     name = CharField(label='名称')
@@ -38,11 +39,11 @@ class MakeCodeRequest(Serializer):
 
 
 class RegisterRequest(Serializer):
-    register_city = CharField(label='所在城市')
-    register_city_code = ListField(child=CharField(), label='所在城市代码')
-    phone = CharField(label='手机号')
-    code = CharField(label='验证码')
-    number = CharField(label='公司编号')
+    # register_city = CharField(label='所在城市')
+    # register_city_code = ListField(child=CharField(), label='所在城市代码')
+    # phone = CharField(label='手机号')
+    # code = CharField(label='验证码')
+    # number = CharField(label='公司编号')
     username = CharField(label='用户名')
     password = CharField(label='密码')
 

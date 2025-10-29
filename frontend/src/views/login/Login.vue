@@ -2,9 +2,9 @@
   <div>
     <div>
       <a-form-model ref="form" :model="form" :rules="rules" :label-col="{ span: 5 }" :wrapper-col="{ span: 14 }">
-        <a-form-model-item prop="number" label="公司编号">
+        <!-- <a-form-model-item prop="number" label="公司编号">
           <a-input size="large" v-model="form.number" />
-        </a-form-model-item>
+        </a-form-model-item> -->
         <a-form-model-item prop="username" label="用户名">
           <a-input size="large" v-model="form.username" />
         </a-form-model-item>
@@ -43,12 +43,12 @@ export default {
       wechatCustomerService: require("@/assets/wechat_customer_service.png"),
       isLoading: false,
       form: {
-        number: "",
+        // number: "",
         username: "",
         password: "",
       },
       rules: {
-        number: [{ required: true, message: "请输入公司编号", trigger: "change" }],
+        // number: [{ required: true, message: "请输入公司编号", trigger: "change" }],
         username: [{ required: true, message: "请输入用户名", trigger: "change" }],
         password: [{ required: true, message: "请输入密码", trigger: "change" }],
       },
@@ -72,6 +72,9 @@ export default {
             .then((data) => {
               Cookies.set("access", data.access);
               Cookies.set("refresh", data.refresh);
+              console.log("Login successful, redirecting to /home");
+              console.log("Access token:", data.access);
+              console.log("Refresh token:", data.refresh);
               this.$router.push("/home");
             })
             .finally(() => {

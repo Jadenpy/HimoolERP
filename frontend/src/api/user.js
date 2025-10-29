@@ -2,6 +2,7 @@ import request from "@/utils/request";
 
 // GetToken
 export function getToken(data) {
+  console.log("getToken data:", data);
   return request({ url: `/user/get_token/`, method: "post", data }, false);
 }
 

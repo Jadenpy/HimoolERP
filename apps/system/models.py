@@ -61,11 +61,12 @@ class User(Model):
     permissions = JSONField(default=list, verbose_name='权限')
     is_manager = BooleanField(default=False, verbose_name='管理员状态')
     is_active = BooleanField(default=True, verbose_name='激活状态')
-    create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
-    team = ForeignKey('system.Team', on_delete=CASCADE, related_name='users')
+    # create_time = DateTimeField(default=timezone.now, verbose_name='创建时间')
+    # team = ForeignKey('system.Team', on_delete=CASCADE, related_name='users')
 
     class Meta:
-        unique_together = [('username', 'team'), ('name', 'team')]
+        # unique_together = [('username', 'team'), ('name', 'team')]
+        unique_together = ['username', 'name', ]
 
 
 class VerificationCode(Model):

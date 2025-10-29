@@ -2,7 +2,7 @@
   <div>
     <div>
       <a-form-model ref="form" :model="form" :rules="rules" :label-col="{ span: 5 }" :wrapper-col="{ span: 14 }">
-        <a-form-model-item prop="phone" label="手机号">
+        <!-- <a-form-model-item prop="phone" label="手机号">
           <a-input size="large" v-model="form.phone" />
         </a-form-model-item>
         <a-form-model-item prop="code" label="验证码">
@@ -16,7 +16,7 @@
         </a-form-model-item>
         <a-form-model-item prop="number" label="公司编号">
           <a-input size="large" v-model="form.number" placeholder="公司英文名或拼音缩写" @pressEnter="register" />
-        </a-form-model-item>
+        </a-form-model-item> -->
         <a-form-model-item prop="username" label="用户名">
           <a-input size="large" v-model="form.username" @pressEnter="register" />
         </a-form-model-item>
@@ -44,25 +44,25 @@ import { provinceAndCityData } from "element-china-area-data";
 export default {
   data() {
     return {
-      register_city_code: [],
+      // register_city_code: [],
       isLoading: false,
       form: {
-        cityCode: undefined,
-        register_city: "",
-        phone: "",
-        code: "",
-        number: "",
+        // cityCode: undefined,
+        // register_city: "",
+        // phone: "",
+        // code: "",
+        // number: "",
         username: "",
         password: "",
       },
       rules: {
-        register_city: [{ required: true, message: "请选择城市", trigger: "change" }],
-        phone: [{ required: true, message: "请输入手机号", trigger: "change" }],
-        code: [{ required: true, message: "请输入验证码", trigger: "change" }],
-        number: [
-          { required: true, message: "请输入公司", trigger: "change" },
-          { max: 32, message: "超出最大长度 (32)", trigger: "change" },
-        ],
+        // register_city: [{ required: true, message: "请选择城市", trigger: "change" }],
+        // phone: [{ required: true, message: "请输入手机号", trigger: "change" }],
+        // code: [{ required: true, message: "请输入验证码", trigger: "change" }],
+        // number: [
+        //   { required: true, message: "请输入公司", trigger: "change" },
+        //   { max: 32, message: "超出最大长度 (32)", trigger: "change" },
+        // ],
         username: [
           { required: true, message: "请输入用户名", trigger: "change" },
           { max: 32, message: "超出最大长度 (32)", trigger: "change" },
@@ -70,19 +70,20 @@ export default {
         password: [{ required: true, message: "请输入密码", trigger: "change" }],
       },
       countDown: -1,
-      provinceAndCityData,
+      // provinceAndCityData,
     };
   },
   methods: {
-    changeCity(code, selectedOptions) {
-      this.register_city_code = code;
-      this.form.register_city = selectedOptions.map((item) => item.label).join(" ");
-    },
+    // changeCity(code, selectedOptions) {
+    //   this.register_city_code = code;
+    //   this.form.register_city = selectedOptions.map((item) => item.label).join(" ");
+    // },
     register() {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.isLoading = true;
-          registerAccount({ ...this.form, register_city_code: this.register_city_code })
+          // registerAccount({ ...this.form, register_city_code: this.register_city_code })
+          registerAccount({ ...this.form})
             .then((data) => {
               this.$message.success("注册成功");
               this.$router.push("/user/login");

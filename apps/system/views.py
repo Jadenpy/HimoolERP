@@ -136,8 +136,9 @@ class UserActionViewSet(FunctionViewSet):
         serializer = GetTokenRequest(data=request.data)
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
-
-        if not (user := User.objects.filter(team__number=validated_data['number'],
+        # if not (user := User.objects.filter(team__number=validated_data['number'],
+        #                                     username=validated_data['username']).first()):
+        if not (user := User.objects.filter(
                                             username=validated_data['username']).first()):
             raise ValidationError('用户不存在')
 
@@ -174,7 +175,12 @@ class UserActionViewSet(FunctionViewSet):
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
     def info(self, request, *args, **kwargs):
         """用户信息"""
-
+        print("========info action called========")
+        print("User info requested by:", self.user.username)
+        print("User ID:", self.user.id)
+        print("User is_manager:", self.user.is_manager)
+        print("User roles:", [role.name for role in self.user.roles.all()])
+        print("self:", self.user)
         serializer = UserInfoResponse(instance=self.user)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
@@ -218,29 +224,34 @@ class UserActionViewSet(FunctionViewSet):
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
 
-        if Team.objects.filter(register_phone=validated_data['phone']).exists():
-            raise ValidationError('手机号已注册')
+        # if Team.objects.filter(register_phone=validated_data['phone']).exists():
+        #     raise ValidationError('手机号已注册')
 
-        if Team.objects.filter(number=validated_data['number']).exists():
-            raise ValidationError('公司编号已存在')
+        # if Team.objects.filter(number=validated_data['number']).exists():
+        #     raise ValidationError('公司编号已存在')
 
-        start_time = timezone.localtime() - timedelta(minutes=10)
-        if not VerificationCode.objects.filter(
-                phone=validated_data['phone'], code=validated_data['code'], create_time__gte=start_time).exists():
-            raise ValidationError('验证码错误或超时')
+        # start_time = timezone.localtime() - timedelta(minutes=10)
+        # if not VerificationCode.objects.filter(
+        #         phone=validated_data['phone'], code=validated_data['code'], create_time__gte=start_time).exists():
+        #     raise ValidationError('验证码错误或超时')
 
-        expiry_time = timezone.localtime() + timedelta(days=3)
-        create_user(validated_data['number'], validated_data['phone'], validated_data['register_city'],
-                    expiry_time, validated_data['username'], validated_data['password'])
+        # expiry_time = timezone.localtime() + timedelta(days=3)
+        create_user(
+            # validated_data['number'], 
+            # validated_data['phone'], 
+            # validated_data['register_city'],
+            # expiry_time, 
+            validated_data['username'], 
+            validated_data['password'])
 
         if CRM_URL:
             result = requests.post(CRM_URL, data={
                 'system': "test_erp",
                 'company': validated_data['number'],
                 'username': validated_data['username'],
-                'expiry_date': expiry_time.strftime('%Y-%m-%d'),
-                'register_phone': validated_data['phone'],
-                'register_city_code': validated_data['register_city_code'],
+                # 'expiry_date': expiry_time.strftime('%Y-%m-%d'),
+                # 'register_phone': validated_data['phone'],
+                # 'register_city_code': validated_data['register_city_code'],
             })
             if result.status_code != 204:
                 raise ValidationError('创建失败')
