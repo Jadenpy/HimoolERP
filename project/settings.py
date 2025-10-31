@@ -57,6 +57,9 @@ INSTALLED_APPS = [
     'apps.message',
     'apps.option',
     'apps.manage',
+    
+    # add ourself apps here
+    'apps.equipments',
 ]
 
 MIDDLEWARE = [

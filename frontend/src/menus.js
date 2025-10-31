@@ -1,5 +1,43 @@
 export default [
-  // {
+
+
+  // add by myself
+   {
+    key: '1', name: '设备管理', icon: 'line-chart', submenus: [
+      { key: '/equipment/index', name: '基础信息' },
+      { key: '/equipment/monitoring', name: '状态监控' },
+      // { key: '/report/stock_report', name: '库存报表' },
+      // { key: '/report/income_expense_statistics', name: '收支统计' },
+      // { key: '/report/batch_report', name: '批次报表' },
+    ]
+  },
+  {
+    key: '2', name: '备件管理', icon: 'table', submenus: [
+      // { key: '/basicData/client', name: '客户管理'},
+      // { key: '/basicData/supplier', name: '供应商管理'},
+      // { key: '/basicData/warehouse', name: '仓库管理'},
+      // { key: '/basicData/settlement_account', name: '结算账户'},
+      // { key: '/basicData/revenue_expenditure_items', name: '收支项目'},
+    ]
+  },
+  {
+    key: '3', name: '维护管理', icon: 'appstore', submenus: [
+      // { key: '/goods/classification', name: '产品分类' },
+      // { key: '/goods/unit', name: '产品单位' },
+      // { key: '/goods/information', name: '产品信息' },
+      // { key: '/goods/temporary_warning', name: '临期预警' },
+    ]
+  },
+  
+  
+  {
+    key: '4', name: '系统管理', icon: 'team', submenus: [
+      { key: '/role', name: '角色管理' },
+      { key: '/account', name: '员工账号' },
+      { key: '/config', name: '系统配置' },
+    ]
+  },
+    // {
   //   key: '1', name: '报表统计', icon: 'line-chart', submenus: [
   //     { key: '/report/sale_report', name: '销售报表' },
   //     { key: '/report/purchase_report', name: '采购报表' },
@@ -68,41 +106,4 @@ export default [
   //     { key: '/config', name: '系统配置' },
   //   ]
   // },
-
-  // add by myself
-   {
-    key: '1', name: '设备管理', icon: 'line-chart', submenus: [
-      { key: '/report/sale_report', name: '基础信息' },
-      { key: '/report/purchase_report', name: '状态监控' },
-      // { key: '/report/stock_report', name: '库存报表' },
-      // { key: '/report/income_expense_statistics', name: '收支统计' },
-      // { key: '/report/batch_report', name: '批次报表' },
-    ]
-  },
-  {
-    key: '2', name: '备件管理', icon: 'table', submenus: [
-      // { key: '/basicData/client', name: '客户管理'},
-      // { key: '/basicData/supplier', name: '供应商管理'},
-      // { key: '/basicData/warehouse', name: '仓库管理'},
-      // { key: '/basicData/settlement_account', name: '结算账户'},
-      // { key: '/basicData/revenue_expenditure_items', name: '收支项目'},
-    ]
-  },
-  {
-    key: '3', name: '维护管理', icon: 'appstore', submenus: [
-      // { key: '/goods/classification', name: '产品分类' },
-      // { key: '/goods/unit', name: '产品单位' },
-      // { key: '/goods/information', name: '产品信息' },
-      // { key: '/goods/temporary_warning', name: '临期预警' },
-    ]
-  },
-  
-  
-  {
-    key: '4', name: '系统管理', icon: 'team', submenus: [
-      { key: '/role', name: '角色管理' },
-      { key: '/account', name: '员工账号' },
-      { key: '/config', name: '系统配置' },
-    ]
-  },
 ]
